@@ -1,5 +1,5 @@
 const corsAllowed = [
-  "http://localhost:5173/"
+  "https://mern-blog-day-application.onrender.com"
 ];
 
 module.exports = corsAllowed;
