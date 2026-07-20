@@ -9,6 +9,7 @@ const cors = require('cors');
 const dns = require('dns');
 const corsOptions = require('./config/corsOptions');
 const path = require('path');
+const { overAllUserPostController } = require('./controller/postController');
 const app = express();
 app.use(cors(corsOptions));
 
@@ -20,6 +21,7 @@ dotenv.config();
 app.use(express.json());
 app.use("/posts", postRouter);
 app.use("/api/auth", userRouter);
+app.get("/allPost", overAllUserPostController)
 
 app.use(express.static(path.join(__dirname, "dist")));
 app.get((req, res) => {

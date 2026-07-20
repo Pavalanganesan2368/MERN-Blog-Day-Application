@@ -9,7 +9,7 @@ const useAllPostData = () => {
     const fetchData = async () => {
 
       try {
-        const response = await api.get("/posts/allPost");
+        const response = await api.get("/allPost");
         const allPosts = await response.data;
   
         setAllPost(allPosts);
