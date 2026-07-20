@@ -14,14 +14,12 @@ const app = express();
 app.use(cors(corsOptions));
 
 dns.setServers(["0.0.0.0", "8.8.8.8"]);
-
 dotenv.config();
 
 
 app.use(express.json());
 app.use("/posts", postRouter);
 app.use("/api/auth", userRouter);
-app.get("/allPost", overAllUserPostController)
 
 app.use(express.static(path.join(__dirname, "dist")));
 app.get((req, res) => {

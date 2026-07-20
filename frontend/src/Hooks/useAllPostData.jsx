@@ -9,10 +9,16 @@ const useAllPostData = () => {
     const fetchData = async () => {
 
       try {
-        const response = await api.get("/allPost");
+        const token = localStorage.getItem("user");
+        const response = await api.get("/posts/allPost", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const allPosts = await response.data;
   
         setAllPost(allPosts);
+        location.reload();
       } catch (error) {
         toast.error(error?.message?.response?.data);
       }
