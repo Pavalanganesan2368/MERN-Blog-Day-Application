@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const dns = require('dns');
 const corsOptions = require('./config/corsOptions');
+const path = require('path');
 const app = express();
 app.use(cors(corsOptions));
 
@@ -19,6 +20,11 @@ dotenv.config();
 app.use(express.json());
 app.use("/posts", postRouter);
 app.use("/api/auth", userRouter);
+
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+})
 
 mongoose.connection.on("open", () => {
   app.listen(PORT, () => {
