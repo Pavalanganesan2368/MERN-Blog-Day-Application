@@ -13,7 +13,6 @@ const useAllPostData = () => {
         const allPosts = await response.data;
   
         setAllPost(allPosts);
-        location.reload();
       } catch (error) {
         toast.error(error?.message?.response?.data);
       }
