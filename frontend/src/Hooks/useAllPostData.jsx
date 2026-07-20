@@ -9,12 +9,7 @@ const useAllPostData = () => {
     const fetchData = async () => {
 
       try {
-        const token = localStorage.getItem("user");
-        const response = await api.get("/posts/allPost", {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const response = await api.get("/posts/allPost");
         const allPosts = await response.data;
   
         setAllPost(allPosts);
